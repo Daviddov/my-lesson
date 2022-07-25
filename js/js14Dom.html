@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .fruit{
+            color: yellowgreen;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>JavaScript Selector</h1>
+    <p >paragraph</p>
+    <p>paragraph</p>
+    <p>paragraph</p>
+    <p>paragraph</p>
+    <ul>
+        <li class="fruit">Apples</li>
+        <li class="fruit">Bananas</li>
+        <li id="veagtebal">Watermelon</li>
+    </ul>
+    <img id="div1">
+        <p>paragraph</p>
+    <p>paragraph</p>
+        </div>
+        <input type="text" id="numb">
+        <button type="submit" onclick="vaild()">Submit</button>
+        <p id="text"></p>
+        <form action="get" onsubmit="return vaildform()" id="myForm">
+          <input type="text" name="fname">
+          <input type="submit" value="Submit">
+        </form>
+    <script>
+        // לפי סוג תג
+        document.getElementsByTagName('h1')
+
+        li1 = document.getElementsByTagName('li')[0]
+
+        myli = document.getElementsByTagName('li')
+
+        li2 = myli[1]
+
+        // לפי קלאס
+        document.getElementsByClassName('fruit')
+        // לפי ID
+        document.getElementById('veagtebal')
+        // CSS selector  בוחר את הראשון עם
+        document.querySelector('li.fruit')
+        document.querySelector('h1')
+        // בוחר את כולם
+        document.querySelectorAll('p')
+        // שינוי ערך
+        li2.innerHTML = 'orange'
+                firstP = document.querySelector('p')
+        firstP.innerHTML = 'hello <strong> World</strong>'
+// להוסיף קלאס
+        li1.className += " fruit1"
+        // למחוק קלאס
+        li1.className = li1.className.replace('fruit1', '')
+
+// דרך נוספת לגשת לקלאס
+        li1.classList 
+        li1.classList.add('new')
+        li1.classList.remove('new')
+        // אם קיים למחוק ואם לא קיים להוסיף
+        li1.classList.toggle('new')
+// לגשת לאחים
+        li1.parentElement.children
+ // לגשת רק בתוך דיב 
+        div1.getElementsByTagName('p')
+// לשנות בלולאה את כל הרשימה
+for (const i of myli) {
+    i.innerHTML = 'banana sababa'  
+}
+        // להוסיף תכונה כמו ID או CLASS
+        document.querySelector('h1').id = "sad"
+        document.getElementById("div1").src = "cup.jpg";
+// להוסיף עיצוב
+document.querySelector('p').style.color = 'red'
+// ליצור אלמנט
+document.createElement('p')
+// להוסיף תאריך ושעה לתוך אלמנט
+time = document.querySelector('p')
+time.innerHTML = Date()
+// להוסיף ישירות לדף
+document.write(Date());
+//    בדיקת ערך
+let vaild = ()=>{
+    x = document.getElementById("numb").value
+if (isNaN(x)|| x < 0 || x > 10) {
+    document.getElementById("text").innerHTML = "Please enter cotect number"
+} document.getElementById("text").innerHTML = "it's OK" 
+}
+// גישה לform
+let vaildform = ()=>{
+   let x = document.forms["myForm"]["fname"].value
+   if ( x == "") {
+    alert("Name must be filled out");
+    return false;
+   }
+}
+
+    </script>
+</body>
+
+</html>

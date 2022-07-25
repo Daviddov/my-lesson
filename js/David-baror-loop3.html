@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <input type="number" id="inputNum" placeholder="Enter a number">
+    <input type="button" id="button" value="Click me" onclick="makeButton()">
+
+    <script>
+        // exercise 1
+        // function sameOrNot(arr1, arr2) {
+        //     if (arr1.length == arr2.length) {
+        //         arr1.sort()
+        //         arr2.sort()
+        //         for (let i = 0; i < arr1.length - 1; i++) {
+
+        //             if (arr1[i] !== arr2[i]){
+        //             return false
+        //             break;
+        //             }
+        //         }return true
+        //     } 
+        // }
+        // arr1 = [211, 121, 323, 261];
+        // arr2 = [211, 121, 323, 261];
+        // arr3 = [211, 121, 323, 2];
+        // console.log(sameOrNot(arr1, arr2)); 
+        // console.log(sameOrNot(arr1, arr3)); 
+
+        // exercise 2
+        // function sortOrRevers(arr,boolean) {
+        //     if (boolean == true) {
+        //         return arr.sort(function(a, b){return a - b})
+        //     }return arr.sort(function(a, b){return b - a})
+        // }
+        // arr3 = [211, 121, 321, 21];
+        // console.log(sortOrRevers(arr3,true)); 
+        // console.log(sortOrRevers(arr3,false));
+
+        //  exercise 3
+        // function makeButton(num) {
+        //     let numOfButton = document.getElementById("inputNum").value;
+        //     for (let i = 0; i < numOfButton; i++) {
+        //         let btn = document.createElement("button");
+        //         let t = document.createTextNode("Click me");
+        //         btn.appendChild(t);
+        //         document.body.appendChild(btn)
+        //     }
+        // }
+
+        //  exercise 4
+        // let text = prompt("Enter text");
+        // let countA = 0;
+        // let j = 0;
+        // for (const i of text) {
+        //     if (text[j] == "A") {
+        //      countA++     
+        //     }j++
+        // }    
+        // alert(`The char "A" ${countA} times in the input`);
+
+        //  exercise 5
+        // function sortOrNot2(arr) {
+        //     let sortUp = 0;
+        //     let sortDown = 0;
+
+        //     for (let i = 1; i < arr.length; i++) {
+        //         if (arr[i] > arr[i+1]) {
+        //            sortUp++
+        //             }
+        //         if (arr[i] < arr[i+1]) {
+        //             sortDown++   
+        //             }
+        //            } if (sortUp == 0) {
+        //             return 1
+        //            } else if (sortDown == 0) {
+        //             return 2
+        //            } else {
+        //             return 0
+        //            }
+
+        //            console.log(sortUp, sortDown)
+        //            }
+
+        // let myArr = [3, 4, 5, 1]
+        // let myArr2 = [1, 2 ,3]
+        // let myArr3 = [3, 2, 1]
+        // console.log(sortOrNot2(myArr));
+        // console.log(sortOrNot2(myArr2));
+        // console.log(sortOrNot2(myArr3));
+
+        //  exercise 6
+//         arr4 = [];
+//         let one = 0;
+//             let tow = 0;
+//             let three = 0;
+//             let four = 0;
+//             let five = 0;
+//             let six = 0;
+//             let seven = 0;
+//             let eghit = 0;
+//             let nine = 0;
+//             let ten = 0;
+//         for (let i = 1; i <= 10; i++) {
+//             let pusher = (+prompt(i + ". Enter a number between 1 - 10"));
+//             if (pusher < 1 ||pusher > 10) {
+//                 alert("You enter worng number")
+//             }
+//             arr4.push(pusher)
+//             console.log("push" + pusher);
+//             switch (pusher) {
+//                 case 1:
+//                     ++one
+//                     break;
+//                 case 2:
+//                     tow++
+//                     break;
+//                 case 3:
+//                      three++
+//                     break;
+//                 case 4:
+//                      four++
+//                     break
+//                 case 5:
+//                     five++
+//                     break;
+//                 case 6:
+//                     six++
+//                     break;
+//                 case 7:
+//                      seven++
+//                     break;
+//                 case 8:
+//                      eghit++
+//                     break
+//                 case 9:
+//                     nine++
+//                     break;
+//             }
+
+//         }
+//  console.log(`
+//             ${one} times 1,
+//             ${tow} times 2,
+//             ${three} times 3,
+//             ${four} times 4,
+//             ${five} times 5,
+//             ${six} times 6,
+//             ${seven} times 7,
+//             ${eghit} times 8,
+//             ${nine} times 9`
+//             )
+
+    </script>
+</body>
+
+</html>

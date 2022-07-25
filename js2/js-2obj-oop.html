@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OOP</title>
+</head>
+
+<body>
+    <script>
+        function UserMaker(name, phone, mail) {
+            this.name = name;
+            this.phone = phone;
+            this.mail = mail;
+
+        }
+        let User1 = new UserMaker(
+            'dov',
+            'bar',
+            'bar@gmail.com'
+        )
+
+        console.log(User1);
+
+        // geter in constructor
+        class User {
+            constructor(fName, lName, phone) {
+                this.fName = fName;
+                this.lName = lName;
+                this._phone = phone;
+            }
+            someMethod() { console.log('hey') };
+            get fullName() { return this.fName + " " + this.lName };
+
+        }
+        const name2 = new User('david', 'bar', 0527674545);
+
+        console.log(name2.fullName);
+        console.log(name2.someMethod());
+
+        //    הורשה של תכונות מקונסטרוקטור אחר
+        class Person extends User {
+            constructor(grade, fName, lName) {
+                super(fName, lName);
+                this.grade = grade;
+            }
+        }
+        const moshe = new Person('moshe', 'koehn', 33);
+        console.log(moshe);
+
+
+
+        class GameCharacter {
+            constructor(name, xPosition, yPosition) {
+                this.name = name
+                this.xPosition = xPosition;
+                this.yPosition = yPosition;
+            }
+            move(xAmount, yAmount) {
+                this.xPosition += xAmount;
+                this.yPosition += yAmount;
+            }
+        }
+
+        const Character1 = new GameCharacter('dave', 50, 30);
+
+        Character1.move(5, 5)
+        // console.log(Character1);
+
+        class NonPlayerCharacter extends GameCharacter {
+            constructor(name, xPosition, yPosition, speed) {
+                super(name, xPosition, yPosition);
+                this.speed = speed;
+            }
+            move(xAmount) {
+                super.move(xAmount, 0)
+            }
+        }
+
+        const Character2 = new NonPlayerCharacter('marvel', 50, 40, 100);
+        Character2.move(5)
+        console.log(Character2);
+
+
+        // window.addEventListener('keydown',function (event) {
+        //     if (event.key == "ArrowRight"){
+        //      Character1.move(5,0)   
+        //     }
+        //     if (event.key == "ArrowLeft"){
+        //      Character1.move(-5,0)   
+        //     }
+        //     console.log(Character1);
+        //     console.log(event);
+        // })
+
+        class NumbersAdd {
+            constructor(num1, num2) {
+                this.num1 = num1;
+                this.num2 = num2;
+            }
+            add() {
+                return this.num1 + this.num2;
+            }
+        }
+        const Numbers = new NumbersAdd(5, 4);
+        console.log(Numbers.add());
+
+
+
+
+        function NumbersAdd2(num1, num2) {
+            this.num1 = num1;
+            this.num2 = num2;
+            add = () => { return this.num1 + this.num2; }
+        }
+        const Numbers2 = new NumbersAdd(5, 4);
+        console.log(Numbers2.add());
+
+    </script>
+</body>
+
+</html>

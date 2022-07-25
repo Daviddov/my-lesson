@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1 id="header">Here is some text</h1>
+        <p id="paragraph">PLACEHOLDER</p>
+        <ul id="unOrderList">
+            <li>1</li>
+            <li>2</li>
+        </ul>
+        <button id="button1">clickMe</button>
+    <script>
+       let myh =document.querySelector('#header').textContent
+       document.querySelector('#paragraph').textContent = myh
+       document.querySelector('#header').style.backgroundColor = 'green'
+       document.body.style.backgroundColor = 'lightgreen'
+
+
+      let mylist = document.querySelector('#unOrderList');
+      let list = document.createElement('li')
+      list.textContent = "lalala"
+// להוסיף בסוף הרשימה
+    //   mylist.append(list)
+// להוסיף בתחילת הרשימה
+      mylist.prepend(list)
+
+// להוסיף רשומה דרך נוספת 
+mylist.innerHTML += '<li>new list</li>'     
+    //   ליצור פיסקא
+      let myP = document.createElement('p');
+    //   להוסיף לפיסקא טקסט
+      myP.textContent = 'way way way';
+    //   להכניס את הפיסקא בדף
+document.body.appendChild(myP)
+// עימוד של הפיסקא
+myP.style.textAlign = "center" 
+myP.style.fontSize = '30px'
+
+
+// רשימה בלולאה
+let powerRangers = [
+    "Jason Lee Scott", 
+    "Kimberly Hart", 
+    "Zack Taylor", 
+    "Trini Kwan", 
+    "Billy Cranston"
+]
+
+let rangersList = mylist
+
+ powerRangers.forEach(element => {
+ let newName = document.createElement("li")   
+newName.textContent = element
+rangersList.append(newName) 
+    
+});
+
+
+// addEventListener
+let funclick =() => {
+   document.body.append('You are the best')
+}
+butten1 =document.querySelector('#button1')
+butten1.addEventListener('click',funclick
+)
+
+mypp = document.querySelector('p')
+mypp.addEventListener('dblclick' , function() {
+    mypp.style.color = 'red'
+})
+// עיצוב אלמנטים
+let myparagraph = document.querySelector('#paragraph')
+myparagraph.setAttribute('style', 'color: blue;')
+    </script>
+</body>
+</html>

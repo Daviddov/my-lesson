@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // // exersize 2
+        //         let num1 = +prompt('1.Enter a number');
+        //         let num2 = +prompt('2.Enter a number');
+        //         let big = num2;
+        //         let small = num1;
+        //         let arrNum = []
+        //         if (num1 > num2) {
+        //             big = num1;
+        //             small = num2;
+        //         }
+        //         for (let i = 0; i < 100; i++) {
+        //             let randomNum = Math.floor(Math.random() * (big - small+1)) + small;
+        //             console.log(randomNum); 
+        //             arrNum.push(randomNum);// exersize 3
+        //         }
+        //             console.log(arrNum.reduce((sum, curnt )=> sum + curnt)/ 100); 
+        // exersize 4
+        let arrBigNum = [];
+        for (let i = 0; i < 100; i++) {
+            arrBigNum.push(Math.floor(Math.random() * 201) + 300)
+        }
+        let sum = 0;
+        for (let i = 0; i < arrBigNum.length; i++) {
+            sum += arrBigNum[i];
+        }
+        console.log(sum);
+
+
+        let sum2 = 0
+        for (const num of arrBigNum) {
+            sum2 += num
+        }
+        console.log(sum2);
+
+
+let bigNum = 0;
+        for (let i = 0; i < arrBigNum.length; i++) {
+            if (bigNum < arrBigNum[i]) {
+                bigNum = arrBigNum[i]
+            }  
+        }
+        console.log(bigNum);
+let bigNum2 = 0 
+for (const theNum of arrBigNum) {
+    if (bigNum2 < theNum) {
+        bigNum2 = theNum
+    }
+}
+console.log(bigNum2);
+let counterEven = 0;
+for (let i = 0; i < arrBigNum.length; i++) {
+    if (arrBigNum[i] % 2 == 1) {
+        counterEven++;
+    } 
+}
+console.log(counterEven);
+
+let counterEven2 = 0 ;
+for (const theNum of arrBigNum) {
+    if (theNum % 2 == 1 ) {
+        counterEven2++;
+    }
+}
+console.log(counterEven2);
+    </script>
+</body>
+
+</html>

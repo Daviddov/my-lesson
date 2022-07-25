@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #butn {
+            transition-property: background-color;
+            transition-duration: 3s;
+            transition: 5s cubic-bezier(.5, -1, .5, 2);
+        }
+        #mydiv{
+            width: 100px;
+            height: 100px;
+            background: red;
+            
+        } 
+         #mydiv:hover{
+            width: 100px;
+            height: 100px;
+            background: rgb(52, 235, 116);
+            transition: 2s background-color;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="butn">click pik</button>
+   <div id="mydiv"></div>
+    <script>
+
+
+        butn.onclick = function () {
+            butn.style.backgroundColor = 'red';
+            butn.style.fontSize = '36px'
+        }
+
+        function doSomthing() {
+            console.log('hello');
+        }
+        // הפעלת פונקציה בהשהיה
+        setTimeout(doSomthing, 5 * 1000);
+
+        let x = 0
+        let inteval;
+        // הפעלת מחזוריות
+        inteval = setInterval(function () {
+            console.log(x);
+            x++;
+        }, 1 * 1000);
+        // הפסקת הפונקציה
+        function stopAnimat() {
+            clearInterval(inteval)
+        }
+        
+
+    </script>
+</body>
+
+</html>

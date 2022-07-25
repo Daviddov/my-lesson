@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        // let x =0;
+        // while (x < 100) {
+
+        //     document.write(x + "<BR>")
+        //     x++
+        // }
+        // for (let i = 0; i < 100; i++) {
+        //     console.log(i); 
+
+        // }
+        // let i = 0;
+        // while (i<10) {
+        //     console.log(i);
+        //     i++
+        // }
+        let code =
+            `let x =0;
+while (x < 100) {
+    
+    document.write(x + "<BR>")
+    x++
+}
+for (let i = 0; i < 100; i++) {
+    console.log(i); 
+    
+}
+let i = 0;
+while (i<10) 
+    console.log(i);
+    i++
+// }`
+
+
+        function chackCode(code, charOp, charCl) {
+            let countOpener = 0;
+            let countCloser = 0;
+            String(code)
+            for (let i = 0; i < code.length; i++) {
+                let element = code[i];
+                if (element == charOp) {
+                    countOpener++
+                }
+                if (element == charCl) {
+                    countCloser++
+                }
+            }
+
+            if (countOpener != countCloser) {
+                console.log(`countOpener: ${countOpener}, countCloser: ${countCloser} `)
+            }
+        }
+
+        chackCode(code, `{`, `}`)
+
+
+    </script>
+
+
+
+
+</body>
+
+</html>

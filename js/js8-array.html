@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        // num =+prompt("Enter a number")
+        // function showLength(num) {
+        //     let str = String(num).length
+
+        //     return str
+        // }
+        // alert(showLength(num));
+
+
+        // תרגיל 2
+        // function findStr(str, start,end ) {
+        //    let a = str.indexOf(start)
+        //    let b = str.indexOf(end)
+        //    console.log(a)
+        //    console.log(b)
+        //     return str.substring(++a, b)
+        // }
+        // let str = "bamb a!zelda? hello"
+        // console.log(findStr(str, "!", "?"));
+
+        // toPrecision()
+
+
+
+        //  const numbers = ["one", "tow", 3];
+        //  numbers[3] = "4"
+        //  console.log(numbers)
+        //  let x = numbers.pop()
+        //  numbers.push(78786)
+        //  let y = numbers.shift()
+        //  numbers.unshift("*")
+        // console.log( y,x);
+        // console.log(numbers.includes(5));
+
+
+        // תרגיל 3
+        // function getNum(arr) {
+        //     return arr[2]
+        // }
+        // let myArray = [3,90,102,1];
+        // console.log(getNum(myArray));
+        // תרגיל 4
+        // function getNewArr(arr) {
+        //     if (arr.length < 3) {
+        //         return "error";
+        //     } 
+        //     return [arr[0], arr[2], arr[arr.length - 2]];
+            
+
+        // }
+        // myArr = [2, 9, 12];
+        // console.log(getNewArr(myArr));
+
+                // const arrD = [];
+                // arrD[0] = [1, 2, 3, 4]
+                // arrD[1] = [1, 2, 3, 4]
+                // arrD[2] = [1, 2, 3, 4]
+                // console.log(arrD[0][2])
+
+                const arrD2 = [
+                    [1.1, 1.2, 1.3, 1.4, 1.5],
+                    [2.1, 2.2, 2.3,],
+                    [3.1, 3.2, ] 
+                ];
+function changhArr(arr) {
+   let num1 = arr[1].pop();
+   arr[1].pop();
+   arr[1][1]= num1;
+   arr[2][2]= 3.3;
+return arr;
+}
+console.log(changhArr(arrD2))
+
+    </script>
+</body>
+
+</html>

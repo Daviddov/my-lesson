@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //     const students = {
+        //        "David": 70,
+        //        "Moshe": 99,
+        //        "Shimon": 59
+        //     }
+        //     let values = Object.keys(students);
+        //     console.log(values[0]);
+        //     console.log(students["David"]);
+
+        //     let i = 0;
+        //     let sum = 0;
+        //     let averge = 0;
+        //     while (i < values.length) {
+        //         sum += students[values[i]] 
+        //         i++
+        //     }
+        //     averge = sum / values.length
+        //    console.log(averge); 
+
+
+
+        //    const chack = {
+        //     first: 1,
+        //     tow:{tree:3}
+        //    }
+        //    console.log(chack.tow.tree);
+
+
+        //    for (let i = 0; i < 10; i++) {
+        //     console.log(i);;
+
+        //    }
+        // let total = 0;
+        // for (let i = 1; i <= 100; i++) {
+        //     total += i;
+        //     console.log(i);
+        // }
+        // console.log(total / 100)
+
+        // let boom = "BOoM!-!"
+        // let tr = "TrahcH!-!"
+        // let boomTr = boom + tr;
+
+        // function printWord(word) {
+        //     for (let j = 0; j < word.length; j++) {
+        //         console.log(word[j]);
+        //     }
+        // }
+        // for (let i = 1; i <= 100; i++) {
+        //     if (i % 3 == 0 && i % 5 == 0) {
+        //         printWord(boom);
+
+        //     } else if (i % 5 == 0) {
+        //         printWord(tr);
+
+        //     } else if (i % 3 == 0) {
+        //         printWord(boomTr);
+
+        //     } else {
+        //         console.log(i);
+        //     }
+        // }
+
+
+        //     function name(str) {
+        //        let sp = str.slice(3)
+
+
+        //         console.log(sp);
+        //     }
+        //     console.log(name("string"));
+       
+        const arr1 = ["orange", "apple", "banana", "mango"];
+        // const arr = ["orange", "apple", "banana", "mango"];
+
+         // loop for each one
+        // arr.forEach(function (item) {
+        //     console.log(item +" length "+ item.length) 
+        // });
+
+        // foreach  call to callback function
+        arr1.forEach(function (item,index,arr) {
+            console.log(item)
+            console.log(index) 
+            console.log(arr) 
+        });
+
+        // loop for of = run on all the argument
+        for (const item of arr1) {
+            console.log(item)
+        }
+
+        // loop for run on all the array by the keys
+        // for (const key in arr1) {
+        //     if (Object.hasOwnProperty.call(arr1, key)) {
+        //         console.log(key + arr1[key]); 
+                
+        //     }
+        // }
+
+    </script>
+</body>
+
+</html>

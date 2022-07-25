@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <script>
+        // if tou use new Object ---> yourObj --->  Object.prototype ---> null
+
+        // yourObj.__proto__ ---> send you to Object.prototype
+        
+
+        // if we use constractor  ---> yourObj ---> constractor.prototype ---> Object.prototype ---> null
+
+        // yourObj.__proto__ ---> send you to constractor.prototype
+
+
+        // בדיקה על אובייקט האם המפתח קיים
+        let users = {
+            user1: { fName: 'das', lName: 'bad' },
+            user2: { fName: 'nas', lName: 'san' }
+        }
+
+        for (const key in users) {
+            const element = users[key];
+            if (element.fName == 'das')
+                console.log(element);
+        }
+
+        //בלי לולאה בדיקה על אובייקט האם המפתח קיים
+        let newObjUsers = {
+            "b@gmail.com": { "name": "das", "pass": 1234 },
+            "a@gmail.com": { "name": "das", "pass": 1234 },
+            "c@gmail.com": { "name": "das", "pass": 1234 },
+            "d@gmail.com": { "name": "das", "pass": 1234 }
+        }
+        if (newObjUsers["b@gmail.com"]) {
+            console.log("login");
+        }
+        // geter seter
+        let objUser = {
+            fName: 'dav',
+            lName: 'bas',
+            _pass: '1234567',
+            get pass() {
+                return this._pass.slice(-3, -1)
+            },
+            //     set passw(num){
+            //         if (typeof num == "number") {
+            //             this._pass = num
+            //         }
+            //     }
+        }
+        // objUser.passw = 9999999
+        console.log(objUser.pass);
+
+
+
+        // simple obj
+        let protoObj = {
+            name: 'DataView',
+            phone: '0038377'
+        }
+        // another wey for obj
+        let protoObj2 = new Object();
+        protoObj2.name = 'DataView';
+        protoObj2.phone = '12345';
+
+        // class 
+        class User {
+            constructor(fName, lName, phone) {
+                this.fName = fName;
+                this.lName = lName;
+                this.phone = phone;
+                
+            }
+            }
+        
+
+        // function creat obj
+        function User2(fName, lName, phone) {
+            this.fName = fName;
+            this.lName = lName;
+            this.phone = phone;
+        }
+
+        // __proto__  prototype
+        const name2 = new User('david', 'bar', 0527674545);
+        const name3 = new User2('sad', 'bas', 7656455);
+
+        // console.log(name1, name2, name3);
+        // console.log(name1.__proto__, name2.__proto__, name3.__proto__,);
+
+        // console.log(name1.__proto__);
+        // name1.__proto__ = name2.__proto__;
+        // console.log(name1.__proto__);
+
+        // להכניס ערך דרך אב הטיפוס
+        User.prototype.yeshiva = true
+        console.log(name2.yeshiva);
+
+ 
+        let obj1 = { porp1: () => { return 'im obj1' } }
+        let obj2 = { porp2: () => { return 'im obj2' } }
+
+        //    לקבל ערכים של אב טיפוס אחר
+        Object.setPrototypeOf(obj1, obj2)
+        console.log(obj1.porp1());
+        console.log(obj1.porp2());
+
+        Object.setPrototypeOf(name3, User)
+        console.log(name3, 'fdfd');
+
+        
+        // better wey to do samething
+        let childObj = Object.create(protoObj);
+
+        // to get the prototype
+        Object.getPrototypeOf(childObj)
+
+
+    </script>
+</body>
+
+</html>

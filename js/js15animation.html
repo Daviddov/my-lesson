@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slider</title>
+    <style>
+        img{
+            width: 300px;
+        }
+        #outerDiv{
+            width: 300px;
+      
+            overflow:hidden;
+        }
+        #innerDiv{
+            width: 9999px;
+            transition: all 0.9s;
+            margin-left: 0px;
+        }
+    </style>
+</head>
+<body>
+    <div id="outerDiv">
+        <div id="innerDiv">
+    <img src="images\car1.jpg">
+    <img src="images\car2.jpg">
+    <img src="images\car3.jpg">
+        </div>
+    </div>
+    
+    <script>
+let numPhoto = document.querySelectorAll('img').length;
+let photowide =300;
+
+let inner = document.querySelector('#innerDiv');
+let outer = document.querySelector('#outerDiv');
+
+inner.addEventListener('click',function(){
+let crruntMargin = parseInt(inner.style.marginleft) || 0;
+if (Math.abs(crruntMargin) >= photowide * (numPhoto-1)) {
+    inner.style.marginleft = '0px'
+} else {
+    inner.style.marginleft = (crruntMargin - photowide) + 'px';
+    console.log(inner.style.marginleft);
+}
+})
+    </script>
+</body>
+</html>

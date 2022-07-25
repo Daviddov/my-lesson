@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // תרגיל 1
+
+//         let num1 = +prompt("1.Enter a number");
+//         let num2 = +prompt("2.Enter another number");
+//         let num3 = +prompt("3.Enter another number");
+//         let num4 = +prompt("4.Enter another number");
+//         let num5 = +prompt("5.Enter another number");
+//         let nums = [num1, num2, num3, num4, num5];
+// console.log("The numbers you choose " +nums);
+
+// תרגיל 2
+
+// function sumFiveNum(arr) {
+//     if (arr.length == 5) {
+//        let allNums = (arr[0] + arr[1] + arr[2] + arr[3] + arr[4]);
+//        if ((allNums % 2) == 0) {
+//         return true
+//        } 
+//         return false
+//     }return "Please enter five numbers";
+    
+// } 
+// let arr1 = [1, 2 ,3 ,4 ,5,];
+// console.log(sumFiveNum(arr1))
+
+// תרגיל 3
+
+// function threeNumToArr(num1, num2, num3) {
+//        let myArr = [num1, num2, num3];
+//        return myArr;
+//        }
+// console.log(threeNumToArr(1, 2, 3))
+
+// תרגיל 4
+
+let person1 = {
+    fName: "David",
+    lName: "Bar"
+    };
+let person2 = {
+    fName: "Moshe",
+    lName: "Koen"
+    };
+let person3 = {
+    fName: "Shimon",
+    lName: "Levi"
+};
+let person4 = {
+    fName: "Simha",
+    lName: "Hatan"
+};
+let person5 = {
+    fName: "Dor",
+    lName: "1"
+};
+
+let persons = [person1, person2, person3, person4, person5];
+let personNum = +prompt("Enter a number between 1-5")
+console.log(persons[personNum-1])
+console.log(Object.values(person1));
+    </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="firstName" placeholder="firstName">
+    <input type="text" id="lastName" placeholder="lastName">
+    <input type="text" id="password" placeholder="password">
+    <button onclick="saveName()">save user</button>
+    <script>
+       
+
+        function saveName() {
+          
+        let fName = document.getElementById('firstName').value;
+        let sName = document.getElementById('lastName').value;
+        let pass = document.getElementById('password').value;
+
+        let user = {
+            fristN: fName,
+            lastN: sName,
+            password: pass
+        }
+        let objUsers = JSON.parse(localStorage.getItem('users'));
+        let localUsers = objUsers || [];
+        localUsers.push(user) ;
+        let usersStr = JSON.stringify(localUsers); 
+        localStorage.setItem('users', usersStr)
+        }
+
+    </script>
+</body>
+
+</html>
