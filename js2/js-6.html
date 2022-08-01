@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+       class Person {
+        constructor(firstName){
+            this._firstName = firstName;
+            this.counter++
+        }
+        // משתנה סטיטיק
+        counter = 0;
+
+        printName(){
+            console.log(`firstName ${this.firstName}`);
+        }
+       } 
+    //      הורשה
+       class Child extends Person{
+        constructor(firstName, age){
+            super(firstName);
+            this.age = age;
+        }
+        getName(){
+            const name = super.getName()
+            return `${name}, age: ${this.age}`;
+        }
+      
+        //  פונקציה סטיטיק
+        static validName(){
+            return true;
+        }
+       }
+
+Child.validName()
+
+       const user = new Child('Moshe', 7)
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const person = {
+            firstName: 'David',
+            lastName: 'Bar',
+            fullName: function (city, country) {
+                console.log(this.firstName + ' ' + this.lastName + ' ' + city + ' ' + country);
+            }
+        }
+        const person2 = {
+            firstName: 'Moshe',
+            lastName: 'kohen',
+        }
+// קורא לפונקציה בהקשר למה שמועבר בסוגריים
+        person.fullName.call(person2);
+        person.fullName.call(person2, "Oslo", "Norway");
+// גם קורא לפונקציה בהקשר למה שמועבר בסוגריים הפרמטרים הנוספים מועברים בתור מערך
+        person.fullName.apply(person2);
+
+        let arr = ["Oslo", "Norway"]
+        person.fullName.apply(person2,arr );
+
+        console.log(Math.max.apply(null, [1, 2, 3]));
+
+
+
+        //without bind = undfined אם אני שומר מתודה בתוך משתנה
+        let unbound = person.fullName;
+        // unbound()
+        // with bind 
+        let bound = unbound.bind(person)
+        bound();
+        
+//bind מבצע את אותה פעולה כמו call 
+// אך לא מפעיל את הפונקציה אלא שומר אותה
+// ומאפשר לשמור אותה עם ההקשר בתוך משתנה
+let newContext = person.fullName.bind(person2);
+newContext()
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

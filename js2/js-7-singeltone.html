@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- <Button id="counterBtn">0</Button> -->
+
+    <script>
+
+
+        // const counterBtn = document.querySelector('#counterBtn');
+
+
+        // function Counter() {
+        //  this.counter = 0 ; 
+        // }
+
+        // Counter.prototype.inc = function() {
+        //     return this.counter++
+
+        // }
+        // const count = new Counter;
+
+        // counterBtn.addEventListener("click",()=>{
+        //     counterBtn.textContent = count.inc()} )
+
+        // addEventListener("click",(element)=>{
+        //    element.target.textContent = count.inc()} )
+
+
+        class Counter {
+            constructor() {
+                this.counter = 0;
+
+                const button = document.createElement('button')
+                button.innerText = this.counter
+                const element = document.body.appendChild(button);
+                    
+                const instance = this
+
+                element.onclick = function(event) {
+                event.target.textContent = instance.inc();
+                 }
+                element.onkeydown = function(event) {
+                event.target.textContent = instance.dec();
+               }
+               element.onwheel = function(event) {
+                event.target.textContent = instance.reset();
+               }
+            }
+            
+            inc() {
+                return ++this.counter
+            }
+            dec() {
+                return --this.counter
+            }
+            reset() {
+                return this.counter = 0
+            }
+
+        }
+
+        const counters = [
+            new Counter,
+            new Counter,
+            new Counter,
+            new Counter,
+            new Counter,
+            new Counter,
+            new Counter,
+            new Counter,
+            new Counter
+            
+        ]
+
+     
+           
+
+     
+
+
+
+
+    </script>
+</body>
+
+</html>

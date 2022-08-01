@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //מתודה שקוראת לפונקציה שמקבלת 2 פרמטרים 
+        const person = {
+            firstName: 'David',
+            lastName: 'bar',
+            myMethod: function (fn) {
+                fn.call(person, arguments[1], arguments[2])
+                fn.apply(person, [arguments[1], arguments[2]])
+
+            }
+        }
+
+        function myfun(str, num) {
+            console.log(str, this.firstName, num);
+        }
+        person.myMethod(myfun, 'hello', 32);
+
+
+        //... מכניס את הפרמטרים לתוך מערך
+        function sum(...args) {
+            return args.reduce((a, b) => a + b, 0)
+        }
+        console.log(sum(1, 3, 5, 6));
+
+        // ... לפרק מערך קיים
+        let arr1 = ['sasa', 'dfdfdf']
+        let copyArr1 = [...arr1]
+        let pointerArr1 = arr1
+
+
+        // להפוך KEY למשתנים 
+        let numObj = { a: 1, b: 2, c: 3 }
+        let { a: aa, b: bb, c: cc } = numObj
+        console.log(aa, bb, cc);
+
+        // אובייקט בתוך אובייקט להפוך KEY למשתנים 
+        let numObj2 = { a: { tow: 2, three: 3 } }
+        let { a: { three: newVar } } = numObj2;
+        console.log(newVar);
+
+        //   להגדיר איברים במערת לתוך משתנים
+        const [x, y, z, , w] = [1, 2, 3, 4, 5]
+        console.log(y);
+        console.log(w);
+
+        // להחליף נתונים בין משתנים
+        let a = 8, b = 6;
+        (() => {
+            [a, b] = [b, a]
+        })();
+        console.log(a);
+        console.log(b);
+
+        // להעתיק מערך חוץ משני האיברים הראשונים
+        const source = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        function removeFirstTwo(list) {
+
+            const [,,...arr] = list;
+
+            return arr;
+        }
+        const arr = removeFirstTwo(source);
+        console.log(arr);
+        console.log(source);
+
+        // לקבל בפונקציה keys בתור פרמטרים מתוך האובייקט
+        const obj3 = {
+            fname: 'david',
+            lname: 'bar',
+            phone: 034343847,
+            id: 30985975,
+            fun(){console.log(this.phone)}
+        }
+        function fullName({fname,lname}) {
+            console.log(fname, lname);
+        }
+        fullName(obj3)
+
+// פונקציה ליצירת אובייקט בדרך קצרה
+const createObj = (fname,lname) => ({fname,lname});
+let Person1 = createObj('mash', 'kan');
+console.log(Person1);
+
+// פונקציה ליצירת קלאס
+function classMaker() {
+    class Vegetable {
+        constructor(name){
+            this.name = name;
+        }
+    }
+    return Vegetable
+}
+const Vegetable = classMaker()
+const carrot = new Vegetable('carrot')
+console.log(carrot.name);
+
+    </script>
+</body>
+
+</html>
