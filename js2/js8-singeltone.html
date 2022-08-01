@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Person{
+            constructor(){
+                if (Person.instance instanceof Person) 
+                {return Person.instance
+                }
+                this.PersonObj = {
+                    'vesion': Math.floor(Math.random() * 4000)
+                };
+                Object.freeze(this.PersonObj);
+                Object.freeze(this);
+                Person.instance = this;
+            }
+            get(key) {
+                return this.PersonObj[key]
+            }
+        }
+
+        const Person1 = new Person;
+        const Person2 = new Person;
+        console.log(Person1,Person2);
+    </script>
+</body>
+</html>
