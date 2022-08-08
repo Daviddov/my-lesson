@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>html, body {
+        padding: 0;
+        margin: 0;
+      }
+      
+      .hide-me {
+        visibility: hidden;
+        opacity: 0;
+        transform: scale(.75);
+      }
+      
+      h1 {
+        margin-top: 0;
+        font-size: 2.4em;
+        font-weight: normal;
+        display: inline-block;
+      }
+      
+      body {
+        font-family: Helvetica, sans-serif;
+        padding: 50px 10%;
+      }
+      
+      button {
+        background-color: #046380;
+        color: #FFF;
+        border: none;
+        padding: 10px 15px;
+        font-size: 15px;
+        border-radius: 4px;
+        cursor: pointer;
+        outline: none;
+        box-shadow: 2px 2px 0 #034154;
+        margin-bottom: 10px;
+        margin-left: 18px;
+        transition: opacity .4s ease-out, transform .4s ease-out, visibility .4s ease-out;
+        position: relative;
+        top: -10px;
+      }
+      
+      button:hover {
+        background-color: #034F66;
+      }
+      
+      button:active {
+        background-color: #034154;
+        box-shadow: none;
+        position: relative;
+        top: -8px;
+        left: 2px;
+      }
+      
+      p {
+        padding: 4px 0 2px 8px;
+        line-height: 1.7;
+        border-bottom: 1px dotted #DDD;
+        list-style: none;
+        margin: 0;
+      }</style>
+</head>
+<body>
+    <header>
+        <h1>JSON and AJAX</h1>
+          <button id="btn">Click me</button> 
+    </header>
+ 
+<div class="animal-info"></div>
+
+
+  <script >
+    let pageCounter = 1;
+const btn = document.querySelector('#btn');
+const animalConteiner = document.querySelector('.animal-info');
+
+btn.addEventListener('click', function() {
+   
+const ourRequest = new XMLHttpRequest();
+ourRequest.open('GET','https://learnwebcode.github.io/json-example/animals-' + pageCounter + '.json' );
+ourRequest.onload = function() {
+    let ourData = JSON.parse(ourRequest.responseText);
+
+    renderHTML(ourData)
+};
+ourRequest.send()
+pageCounter++
+if (pageCounter > 3) {
+    btn.classList.add('hide-me')
+}
+})
+
+function renderHTML(data) {
+    let htmlStr = ''
+    for (let i = 0; i< data.length; i++) {
+        htmlStr += '<p>' + data[i].name + ' is a' + data[i].species + '</p>';
+    }
+  animalConteiner.insertAdjacentHTML('beforeend', htmlStr)  
+}
+  </script>
+</body>
+</html>
