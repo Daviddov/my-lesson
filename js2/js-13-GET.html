@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <script>
+    function requsetGeter(url) {
+     const req = new XMLHttpRequest()
+req.open('GET',url)
+req.send()
+req.onload = function(event){
+    const res = event.target
+    const response = JSON.parse( res.responseText)
+    console.log(response);
+   console.log(this===res);
+    }
+
+}
+requsetGeter('https://swapi.dev/api');
+requsetGeter('https://swapi.dev/api/films');
+requsetGeter('https://swapi.dev/api/people');
+console.log('pop',);
+
+   </script> 
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        const url ='http://jbh-9.us-east-2.elasticbeanstalk.com/api/users'
+        const req = new XMLHttpRequest();
+        req.open('POST',url);
+       
+req.onload =()=>{
+    if (req.status === 201)
+    {console.log("sucsses")};
+    console.log("status" ,req.status);
+    
+}
+req.setRequestHeader('Content-Type', 'application/json')
+const body = {
+    fullName: 'dav1id1 Wales',
+    // emailAddress: Math.random()+'@ravtech.co.il',
+    emailAddress: 2+'@ravtech.co.il',
+    password: '1234563',
+    confirmPassword: '1234563'
+};
+
+const jbody = JSON.stringify(body);
+req.send(jbody)
+
+
+    </script>
+</body>
+</html>
