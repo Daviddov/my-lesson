@@ -20,14 +20,14 @@ button{
 </head>
 <body>
     <script src="./requsetFunction.js"></script>
-    <!-- <div class="conteiner">
+     <div class="conteiner">
         <div class="row">
             <input type="text" class="fullName sing-up" placeholder="Enter full Name"><br>
             <input type="text" class="email sing-in" placeholder="Enter Email"><br>
             <input type="text" class="password sing-in" placeholder="Enter Password"><br>
             <input type="text" class="confirmePassword sing-up" placeholder="Confirm Password"><br>
-<button class="submit" onclick="submit()">Submit</button>
-        </div> -->
+<button class="submit" onclick="loginButton()">Submit</button>
+        </div> 
        
     </div>
     <script>
@@ -39,17 +39,21 @@ const user = {
     email:email,
     password:password
 }
-
+const header = {'name': email,"password": password}
 function login(res){
     console.log(res);
     if (res) {
         console.log('wow');
-        const userData =res.data
+        
+        const userData =JSON.stringify(res.data[0])
         localStorage.setItem('user',userData);
         // location.href = 
     }
    }
-   requestSender('GET',url,login,{'name': email,"password": password})
+   function loginButton() {
+     requestSender('GET',url,login,header)
+   }
+  
     </script>
 </body>
 </html>

@@ -9,30 +9,32 @@
 </head>
 
 <body>
+    <script src="./requsetFunction.js"></script>
     <script>
         const user = {
             "fullName":"david",
-            "emailAddress":"aaad@jbh.com",
+            "emailAddress":"aaaaad@jbh.com",
             "password":"1",
             "confirmPassword":"1"
         }
+        
         const body = JSON.stringify(user)
         const url = 'http://jbh-9.us-east-2.elasticbeanstalk.com/api/users'
 
-        const req = new XMLHttpRequest();
-        req.open('POST', url);
-        req.setRequestHeader("Content-type", "application/json");
-        req.send(body)
 
-        req.onload= function(){
-            console.log(req.status);
-    if (req.status === 201) {
+function signUP(res) {
+    if(res){
         console.log('wow');
-        const userData =req.responseText
+        const userData =JSON.stringify(res.data[0])
         localStorage.setItem('user',userData);
         // location.href = 
     }
-   }
+}
+function signUPButton() {
+   requestSender('POST',url,signUP,header = {},body) 
+}
+
+
     </script>
 </body>
 

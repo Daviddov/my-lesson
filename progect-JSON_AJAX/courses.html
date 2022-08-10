@@ -4,31 +4,41 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Corses</title>
 </head>
 <body>
+<button id="addcours" onclick="addCourse()">Add Course</button>
+
     <script src="./requsetFunction.js"></script>
     <script>
         const user = JSON.parse(localStorage.getItem('user'))
         const url = 'http://jbh-9.us-east-2.elasticbeanstalk.com/api/courses'
-
-
-        function courseGeter(res){
-            console.log(res);
+        const password = user.password;
+        const email = user.emailAddress;
+        const body = '{"hgfd":"rerer"}'
+        const id = user._id
+        function coursesGeter(res){
+            if(res){
+               console.log(res);
           res.data.forEach(element => {
            console.log('Courses: ', element.title);
           });
-        console.log(res);
+        console.log(res);  
+            }
         }
-        requestSender('GET',url,courseGeter)
+        requestSender('GET',url,coursesGeter)
 
 // post course 
 
-// const body = ''
-// const req2 = new XMLHttpRequest();
-// req2.open('POST', url);
-// req2.setRequestHeader("Content-type", "application/json")
-// req2.send(body)
+// function newCourse(res) {
+//     if(res){
+//                console.log(res);
+// }}
+
+// function addCourse() {
+//     const header = {"_id": id}
+//     requestSender('POST',url,newCourse,header, body);
+// }
     </script>
 </body>
 </html>
