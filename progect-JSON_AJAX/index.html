@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sing in</title>
+    <style>
+.conteiner{
+    text-align: center;
+    margin:3em;
+}
+input{
+    margin:0.3em;
+}
+button{
+    margin:0.3em;
+}
+    </style>
+</head>
+<body>
+    <script src="./requsetFunction.js"></script>
+    <!-- <div class="conteiner">
+        <div class="row">
+            <input type="text" class="fullName sing-up" placeholder="Enter full Name"><br>
+            <input type="text" class="email sing-in" placeholder="Enter Email"><br>
+            <input type="text" class="password sing-in" placeholder="Enter Password"><br>
+            <input type="text" class="confirmePassword sing-up" placeholder="Confirm Password"><br>
+<button class="submit" onclick="submit()">Submit</button>
+        </div> -->
+       
+    </div>
+    <script>
+const url = 'http://jbh-9.us-east-2.elasticbeanstalk.com/api/users';
+const email = "d@jbh.com"
+const password = "1"
+
+const user = {
+    email:email,
+    password:password
+}
+
+function login(res){
+    console.log(res);
+    if (res) {
+        console.log('wow');
+        const userData =res.data
+        localStorage.setItem('user',userData);
+        // location.href = 
+    }
+   }
+   requestSender('GET',url,login,{'name': email,"password": password})
+    </script>
+</body>
+</html>

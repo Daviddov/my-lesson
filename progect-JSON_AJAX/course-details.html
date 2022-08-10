@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course-details</title>
+</head>
+<body>
+    <script src="./requsetFunction.js"></script>
+    <script>
+         const user = JSON.parse(localStorage.getItem('user'))
+       const url = "http://jbh-9.us-east-2.elasticbeanstalk.com/api/courses/62974f6f477f21b34674ec17"
+
+  
+        function courseDetails(res){
+            console.log(res.data);
+        }
+
+        requestSender('GET',url,courseDetails)
+
+
+    </script>
+
+</body>
+</html>

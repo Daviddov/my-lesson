@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const url = 'http://jbh-9.us-east-2.elasticbeanstalk.com/api/courses'
+        const user = JSON.parse(localStorage.getItem('user'))
+        
+        const req = new XMLHttpRequest()
+        req.open('POST', url)
+        req.setRequestHeader("Content-type", "application/json")
+        req.setRequestHeader("name", user.email);
+        req.setRequestHeader("password", user.password);
+
+        req.send(body)
+
+    </script>
+</body>
+
+</html>
