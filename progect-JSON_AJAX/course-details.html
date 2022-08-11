@@ -10,11 +10,23 @@
     <script src="./requsetFunction.js"></script>
     <script>
          const user = JSON.parse(localStorage.getItem('user'))
-       const url = "http://jbh-9.us-east-2.elasticbeanstalk.com/api/courses/62974f6f477f21b34674ec17"
+         const idCourse = localStorage.getItem('idCourse')
+       const url = 'http://jbh-9.us-east-2.elasticbeanstalk.com/api/courses/' + idCourse
 
   
         function courseDetails(res){
-            console.log(res.data);
+            console.log(res.data[0]);
+            if (res) {
+               const courseData = res.data[0]
+               const div = document.createElement('div');
+               div.innerText = courseData.title+ courseData._id
+               
+               
+
+
+             
+        const course = document.body.appendChild(div);
+            }
         }
 
         requestSender('GET',url,courseDetails)

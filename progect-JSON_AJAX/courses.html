@@ -1,13 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Corses</title>
+    <title>Courses</title>
+    <style>
+        div {
+            display: inline-block;
+            margin: 1rem;
+            padding: 1rem;
+            background: rgb(130, 193, 193);
+            width: 100px;
+        }
+    </style>
 </head>
+
 <body>
-<button id="addcours" onclick="addCourse()">Add Course</button>
+    <button id="Show More Courses" onclick="more()"></button>
+    <div id="addcours" onclick="addCourse()">Add Course</div>
 
     <script src="./requsetFunction.js"></script>
     <script>
@@ -17,16 +29,24 @@
         const email = user.emailAddress;
         const body = '{"hgfd":"rerer"}'
         const id = user._id
-        function coursesGeter(res){
-            if(res){
-               console.log(res);
-          res.data.forEach(element => {
-           console.log('Courses: ', element.title);
-          });
-        console.log(res);  
+
+        function coursesGeter(res) {
+            if (res) {
+                // res.data.forEach(element => {  new Course(element)  });
+                // console.log(res, 'res');
+  
             }
         }
-        requestSender('GET',url,coursesGeter)
+        
+function more(res) {
+    for (let i = 0; i < 30; i++) {
+                    new Course(res.data[i])
+                    
+                }
+}
+  
+
+        requestSender('GET', url, coursesGeter)
 
 // post course 
 
@@ -41,4 +61,5 @@
 // }
     </script>
 </body>
+
 </html>
