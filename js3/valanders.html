@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let arrOfNum = [1, 2, 3];
+        let arrOfNum2 = arrOfNum; // pointer
+        arrOfNum[0] = 10;
+        console.log(arrOfNum2[0]);
+
+        //copy arr by for
+        let arrOfNum3 = [];
+        for (const element of arrOfNum) {
+            arrOfNum3.push(element);
+        }
+        console.log(arrOfNum3);
+
+        // copy arr by map
+        let arrOfNum4 = arrOfNum.map(num => num);
+        console.log(arrOfNum4);
+
+        // copy arr by JSON.sringify
+        let arrOfNum5 = JSON.parse(JSON.stringify(arrOfNum))
+        console.log(arrOfNum5);
+
+
+        let arrOfObj = [
+            {
+                fName: 'Dan',
+                lName: 'Dana'
+            },
+            {
+                fName: 'Ban',
+                lName: 'Bana'
+            },
+            {
+                fName: 'Ran',
+                lName: 'Rana'
+            }
+        ]
+
+        // shallow copying 
+        const arrCopy = arrOfObj
+        console.log(arrCopy);
+
+        // deep copying
+        const deepCopy = [
+            {
+                fName: arrOfObj[0].fName,
+                lName: arrOfObj[0].lName
+            },
+            {
+                fName: arrOfObj[1].fName,
+                lName: arrOfObj[1].lName
+            },
+            {
+                fName: arrOfObj[2].fName,
+                lName: arrOfObj[2].lName
+            },
+
+        ];
+        console.log(deepCopy);
+        // copy by stringify
+        let arrOfObj2 = JSON.parse(JSON.stringify(arrOfObj))
+        console.log(arrOfObj);
+
+        // copy by Object.assign to copy as a value  no nested objects
+        let arrOfObj3 = Object.assign([{}], arrOfObj)
+        console.log(arrOfObj3);
+
+        // Deep Copy in The Spread Operator
+
+        let arrOfObj4 = [...arrOfObj]
+        console.log(arrOfObj);
+    </script>
+</body>
+
+</html>
