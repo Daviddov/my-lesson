@@ -1,45 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Course-details</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./style.css">
+  <title>Course-details</title>
+  <style>
+    #rating_bar {
+      width: 100px;
+      height: 100px;
+      display: inline-block;
+      display: inline;
+    }
+  </style>
 </head>
+
 <body>
-    <script src="./requsetFunction.js"></script>
-    <script>
-         const user = JSON.parse(localStorage.getItem('user'))
-         const idCourse = localStorage.getItem('idCourse')
-       const url = 'http://jbh-9.us-east-2.elasticbeanstalk.com/api/courses/' + idCourse
+  <header id="header">
+    <a href="./courses.html">Home</a>
+    <a onclick="logout()" href="./index.html">Log out</a>
+  </header>
 
-  
-        function courseDetails(res){
-            console.log(res.data[0]);
-            if (res) {
-               const courseData = res.data[0]
-               const div = document.createElement('div');
-               div.innerText = courseData.title+ courseData._id
-               
-               
+  <main class="conteiner"></main>
+  <div id="rating_bar"> </div><br><br>
+
+  <textarea name="review" id="review" cols="30" rows="10">Add a review</textarea><br>
+  <button class="rating btn" onclick="rating()">rating</button><br><br>
+  <button class="EditCourse btn" onclick="window.location.href = './edit-course.html'">edit course</button>
+
+  <script src="./requsetFunction.js"></script>
+  <script>
+    const conteiner = document.querySelector('.conteiner')
+    const user = JSON.parse(localStorage.getItem('user'))
+    const idCourse = sessionStorage.getItem('idCourse')
+    let url = 'http://jbh-9.us-east-2.elasticbeanstalk.com/api/courses/' + idCourse
+    let courseData = {}
+    checkLogin()
+    requestSender('GET', url, courseDetails)
 
 
-             
-        const course = document.body.appendChild(div);
+    function courseUpdate(res) {
+      if (res) {
+              console.log(res);  
             }
-        }
+    }
+    let numOfStars;
+    function rating() {
+      let review = document.querySelector('#review').value
+      let rateUrl = url += '/reviews'
+      const header = { 'name': user.emailAddress, "password": user.password }
+      const rating = {
+        "rating": numOfStars,
+        "review": review
+      }
+      console.log(rating);
+      let body = JSON.stringify(rating)
+      requestSender('POST', rateUrl, courseUpdate, header, body)
+    }
 
-        requestSender('GET',url,courseDetails)
 
 
-        
-        // function rating() {
-            // if (user.id ) {
-                
-            // }
-        // }
+    let content = '';
+    for (let i = 1; i <= 5; i++) {
+      content += ' <span id="rate_' + i + '">✰</span> ';
+      document.getElementById('rating_bar').innerHTML = content;
+    }
+    let spans = document.getElementById("rating_bar")
+      .getElementsByTagName('span');
+    for (i = 0; i < spans.length; i++) {
+      spans[i].onmouseover = hoverStar;
+    }
 
-    </script>
+    function hoverStar() {
+      numOfStars = this.id.charAt(5);
+      for (i = 0; i < this.id.charAt(5); i++) {
+        spans[i].innerText = '⭐';
+      }
+
+      for (i = this.id.charAt(5); i < 5; i++) {
+        spans[i].innerText = '✰';
+      }
+    }
+  </script>
 
 </body>
+
 </html>

@@ -5,60 +5,110 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Courses</title>
-    <style>
-        div {
-            display: inline-block;
-            margin: 1rem;
-            padding: 1rem;
-            background: rgb(130, 193, 193);
-            width: 100px;
-        }
-    </style>
+
 </head>
 
 <body>
-    <button id="Show More Courses" onclick="more()"></button>
-    <div id="addcours" onclick="addCourse()">Add Course</div>
+    <header id="header">
+        <a href="./courses.html">Home</a>
+        <a onclick="logout()" href='./index.html'>Log out</a>
+    </header>
+
+    <button name="search" class="btn" onclick="search()">Search</button>
+    <input id="search" name="search" type="text" placeholder="Title">
+    <main id="conteiner"></main>
+    <button id="Show More Courses" class="btn" onclick="moreCourses()">View more courses</button>
+    <div class="conteiner">
+       
+    <input type="text" id="title" placeholder="Title">
+    <input type="text" id="description" placeholder="description">
+    <input type="text" id="estimatedTime" placeholder="estimated Time">
+    <input type="text" id="materialsNeeded" placeholder="materials Needed">
+    <input type="number" id="stepNumber" placeholder="step number">
+    <input type="text" id="stepTitle" placeholder="step title">
+    <input type="text" id="stepDescription" placeholder="step description">
+        <button id="addCours" class="btn" onclick="addCourse()">Add Course</button>
+    </div>
+    
 
     <script src="./requsetFunction.js"></script>
     <script>
+        const conteiner = document.querySelector('#conteiner')
         const user = JSON.parse(localStorage.getItem('user'))
         const url = 'http://jbh-9.us-east-2.elasticbeanstalk.com/api/courses'
-        const password = user.password;
-        const email = user.emailAddress;
-        const body = '{"hgfd":"rerer"}'
-        const id = user._id
 
-        function coursesGeter(res) {
-            if (res) {
-                // res.data.forEach(element => {  new Course(element)  });
-                // console.log(res, 'res');
-  
-            }
-        }
+
+
+        let viewCourse = 0
+        checkLogin()
         
-function more(res) {
-    for (let i = 0; i < 30; i++) {
-                    new Course(res.data[i])
-                    
-                }
-}
-  
+        function moreCourses() {
+            for (let i = viewCourse; i < viewCourse + 20; i++) {
+                new Course(theRequest.data.data[i])
+            }
+            viewCourse += 20
+        }
 
-        requestSender('GET', url, coursesGeter)
+        requestSender('GET', url, moreCourses)
 
-// post course 
 
-// function newCourse(res) {
-//     if(res){
-//                console.log(res);
-// }}
 
-// function addCourse() {
-//     const header = {"_id": id}
-//     requestSender('POST',url,newCourse,header, body);
-// }
+        // post course 
+
+        function theNewCourse(res) {
+            console.log(res);
+        }
+
+
+        function addCourse() {
+            
+            const title = document.querySelector('#title').value;
+            const description = document.querySelector('#description').value;
+            const estimatedTime = document.querySelector('#estimatedTime').value;
+            const materialsNeeded = document.querySelector('#materialsNeeded').value;
+            
+            const stepNumber = document.querySelector('#stepNumber').value;
+            const stepTitle = document.querySelector('#stepTitle').value;
+            const stepDescription = document.querySelector('#stepDescription').value;
+
+            let newCourse = {
+                "user": {
+                    "_id": user._id,
+                    "fullName": user.fullName
+                },
+                "title": title,
+                "description": description,
+                "estimatedTime": estimatedTime,
+                "materialsNeeded": materialsNeeded,
+                "steps": [
+                    {
+                        "stepNumber": stepNumber,
+                        "title": stepTitle,
+                        "description": stepDescription
+                    }
+                ],
+                "overallRating": 0,
+                "reviews": []
+            }
+
+            const header = { 'name': user.emailAddress, "password": user.password }
+            let body = JSON.stringify(newCourse)
+            requestSender('POST', url, theNewCourse, header, body);
+        }
+
+        function search() {
+            let search = document.querySelector('#search').value;
+            theRequest.data.data.forEach(element => {
+
+                if (element.title == search) { new Course(element); }
+            });
+
+
+
+        }
+
     </script>
 </body>
 

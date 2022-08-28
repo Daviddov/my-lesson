@@ -1,59 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Sing in</title>
     <style>
-.conteiner{
-    text-align: center;
-    margin:3em;
-}
-input{
-    margin:0.3em;
-}
-button{
-    margin:0.3em;
-}
+
+        input {
+            margin: 0.3em;
+        }
+
+        button {
+            margin: 0.3em;
+        }
     </style>
 </head>
+
 <body>
     <script src="./requsetFunction.js"></script>
-     <div class="conteiner">
-        <div class="row">
-            <input type="text" class="fullName sing-up" placeholder="Enter full Name"><br>
-            <input type="text" class="email sing-in" placeholder="Enter Email"><br>
-            <input type="text" class="password sing-in" placeholder="Enter Password"><br>
-            <input type="text" class="confirmePassword sing-up" placeholder="Confirm Password"><br>
-<button class="submit" onclick="loginButton()">Submit</button>
-        </div> 
-       
+
+    <header id="header">
+        <a href="./courses.html">Home</a>
+        <a onclick="logout()" href='./index.html'>Log out</a>
+        <a href="./sing-up.html">Sing up</a>
+    </header>
+    <div class="conteiner">
+        <form id="loginForm" method="GET" action="http://jbh-9.us-east-2.elasticbeanstalk.com/api/users">
+            <h1>Sing in</h1>
+            <label for="name">Enter your email: </label><br>
+            <input type="email" class="email sing-in" placeholder="Enter Email" name="name"
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required><br>
+            <label for="name">Enter your password: </label><br>
+            <input type="password" name="password" class="password sing-in" placeholder="Enter Password" required><br>
+            <button type="submit" class="submit btn" onclick="loginButton()">Submit</button>
+        </form>
+
+    </div><br>
+
+    <a href="">I forgat my password</a>
+
+
     </div>
     <script>
-const url = 'http://jbh-9.us-east-2.elasticbeanstalk.com/api/users';
-const email = "d@jbh.com"
-const password = "1"
 
-const user = {
-    email:email,
-    password:password
-}
-const header = {'name': email,"password": password}
-function login(res){
-    console.log(res);
-    if (res) {
-        console.log('wow');
-        
-        const userData =JSON.stringify(res.data[0])
-        localStorage.setItem('user',userData);
-        location.href = './courses.html'
+
+        const loginForm = document.querySelector('#loginForm');
+        const url = loginForm.action
+
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault()
+        }
+        );
+
+        function login(res) {
+            if (res) {
+                res.data[0].date = new Date
+                const userData = JSON.stringify(res.data[0])
+                localStorage.setItem('user', userData);
+                location.href = './courses.html'
+            }
+        }
+        function loginButton() {
+            let email = document.querySelector('.email').value;
+            let password = document.querySelector('.password').value;
+            if (email && password) {
+                const header = { 'name': email, "password": password }
+                requestSender('GET', url, login, header)
+            }
+        }
+        function checkLog() {
+    let user = JSON.parse(localStorage.getItem('user'));
+    if (user != null) {
+        const loginDate = new Date(user.date);
+        const nowDate = new Date;
+        const timePass = nowDate - loginDate;
+        if (timePass > 60 * 60 * 1000) {
+            logout()
+        } else {
+            const header = document.querySelector('#header')
+            const p = document.createElement('h4');
+            p.innerText = 'Welcome ' + user.fullName;
+            const name = header.appendChild(p)
+        }
+    } 
+       
     }
-   }
-   function loginButton() {
-     requestSender('GET',url,login,header)
-   }
-  
+    checkLog()
+
+
     </script>
 </body>
+
 </html>

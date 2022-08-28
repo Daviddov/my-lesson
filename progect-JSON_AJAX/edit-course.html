@@ -5,24 +5,77 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <title>Edit Course</title>
 </head>
 
 <body>
+    <header id="header">
+        <a href="./courses.html">Home</a>
+        <a onclick="logout()" href="./index.html">Log out</a>
+    </header>
+
+    <main id="conteiner" class="conteiner"></main>
+    <input type="text" id="title" placeholder="Title">
+    <input type="text" id="description" placeholder="description">
+    <button class="EditCourse btn" onclick="EditCourse()">Edit Course</button><br><br>
+
+    <input type="number" id="stepNumber" placeholder="step number">
+    <input type="text" id="stepTitle" placeholder="step title">
+    <input type="text" id="stepDescription" placeholder="step description">
+    <button class="addStep btn" onclick="addStep()">Add Step</button>
     <script src="./requsetFunction.js"></script>
     <script>
-        const url = 'http://jbh-9.us-east-2.elasticbeanstalk.com/api/courses'
         const user = JSON.parse(localStorage.getItem('user'))
-        
-        const req = new XMLHttpRequest()
-        req.open('POST', url)
-        req.setRequestHeader("Content-type", "application/json")
-        req.setRequestHeader("name", user.email);
-        req.setRequestHeader("password", user.password);
+        const idCourse = sessionStorage.getItem('idCourse')
+        let url = 'http://jbh-9.us-east-2.elasticbeanstalk.com/api/courses/' + idCourse
+        let courseData = {}
+        checkLogin()
+        requestSender('GET', url, courseDetails)
 
-        req.send(body)
+
+
+        function courseUpdate(res) {
+            if (res) {
+              console.log(res);  
+            }
+            
+
+        }
+
+
+        function EditCourse() {
+            const header = { 'name': user.emailAddress, "password": user.password }
+            const title = document.querySelector('#title').value;
+            const description = document.querySelector('#description').value;
+            courseData.title = title
+            courseData.description = description
+
+
+            let body = JSON.stringify(courseData)
+            requestSender('PUT', url, courseUpdate, header, body)
+        }
+
+        function addStep() {
+            const header = { 'name': user.emailAddress, "password": user.password }
+            stepNumber = document.querySelector('#stepNumber').value;
+            title = document.querySelector('#stepTitle').value;
+            description = document.querySelector('#stepDescription').value;
+
+            const step = {
+                "stepNumber": stepNumber,
+                "title": title,
+                "description": description
+            }
+            courseData.steps.push(step);
+
+            let body = JSON.stringify(courseData)
+            requestSender('PUT', url, courseUpdate, header, body)
+        }
+
 
     </script>
+
 </body>
 
 </html>
