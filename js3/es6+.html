@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+
+<body>
+    <script src="./index.js"></script>
+    <script>
+        // es6 
+        function addressMaker(address) {
+            const { city, state } = address
+            newAddress = {
+                city,
+                state,
+                zipcode: 23235
+            }
+        }
+        addressMaker('Jerusalem', 'Isreal')
+
+
+        const students = [
+            { name: 'david', city: "Jrusalem" },
+            { name: 'das', city: "Tel-aviv" },
+        ]
+
+        for (const student of students) {
+            const { name, city } = student
+            console.log(`${name} lives in ${city}`);
+        }
+
+
+        const shoppingList = ['eggs', 'milk', 'butter'];
+        const shoppingBasket = [
+            ...shoppingList,
+            'apple'
+        ]
+        console.log(shoppingBasket);
+
+
+        // מקבל פרמטרים ללא הגבלה כמערך
+        function add(...num) {
+            console.log(num);
+        }
+        add(2, 4, 5, 6, 7);
+
+        //האם קיים ערך במערך
+        const arr3 = [1, 2, 3, 4];
+
+        console.log(arr3.includes(3))
+
+//   למלא בתווים
+
+let example = 'david'
+console.log(example.padStart(10, 'w'));
+console.log(example.padEnd(10, 'w'));
+
+ 
+    </script>
+</body>
+
+</html>

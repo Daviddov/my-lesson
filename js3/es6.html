@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   
+    <script>
+        const person = {
+            name: 'david',
+            id: 30003232,
+            nestedObj: {
+                address: 'israel',
+                phone: 054534546}
+        }
+    //   העתקת מפתחות למשתנים
+        const {name, id } = person
+        console.log(person);
+
+// העתקת nested Obj
+          const {nestedObj: { address } } = person
+console.log(address);
+
+
+//  copy + הוספה ערכים
+       const copyPerson = {...person, addres: 'JERUSALEM', id: 43434};
+   
+// הכנסת פרמטרים ללא הגבלה
+function doSom(...args) {
+    let arr = args
+    console.log(arr);
+}
+     doSom(1,2,3,4)
+     
+     
+//  copy arr
+let arr = [1,2,3];
+let copyArr = [...arr]; 
+// העתקה חוץ מאיבר הראשון
+let copyArr1 = [,...arr]; 
+
+// להפוך מפתחות למשתנים עם שמות
+const {name: letName, id: letid} = person
+console.log('letid ', letid);
+
+const {nestedObj:{address: letAddress}} = person
+
+console.log(letAddress);
+
+// ליצור מאיברים משתנים
+let arr2 = [1, 2, 3, 4]
+let [a, b, c, d] =  arr2 
+console.log(a);
+
+// לשנות איברים במערך ע"י המשתנים
+a = 9
+
+// להחליף בין משתנים
+let abc = 123, cba = 321;
+(()=> {
+    [abc,cba] = [cba, abc]
+})()
+console.log(abc);
+
+// פונקציה ליצירת אובייקט
+function addressMaker(city, state) {
+    // const newAddress = {city:city, state:state}
+    const newAddress = {city, state}
+}
+addressMaker('jerusalem, isreal')
+
+    </script>
+</body>
+</html>
